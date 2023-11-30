@@ -28,12 +28,22 @@ public class StringSearch {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
 
-            // Compile the pattern with or without case sensitivity
+            /**
+             * Compile the pattern with or without case sensitivity
+             * depending on the -i argument
+             * 
+             * Checks for matching pattern using regex recognition
+             */
             Pattern compiledPattern = caseInsensitive ? 
                                       Pattern.compile(pattern, Pattern.CASE_INSENSITIVE) :
                                       Pattern.compile(pattern);
 
-            // Read and search each line in the file
+            /**
+             * Read the file line by line and don't stop until the end of the file
+             * 
+             * Check if the line matches the pattern
+             * If it does, print the line
+             */
             while ((line = reader.readLine()) != null) {
                 Matcher matcher = compiledPattern.matcher(line);
                 if (matcher.find()) {
